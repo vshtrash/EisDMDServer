@@ -1,0 +1,41 @@
+-- Database: postgres
+
+-- DROP DATABASE postgres;
+
+CREATE DATABASE postgres
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Latvian_Latvia.1257'
+    LC_CTYPE = 'Latvian_Latvia.1257'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+COMMENT ON DATABASE postgres
+    IS 'default administrative connection database';
+
+
+
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+
+
+-- Table: public.customer
+
+-- DROP TABLE public.customer;
+
+CREATE TABLE public.customer
+(
+    id bigint NOT NULL,
+    enabled boolean,
+    name character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT customer_pkey1 PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.customer
+    OWNER to postgres;
