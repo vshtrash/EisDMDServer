@@ -1,16 +1,13 @@
 package com.eis.model.customer;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "customers")
-public class Customer implements Serializable {
+@Table(name = "products")
+public class Product implements Serializable {
 
-    private static final long serialVersionUID = -3009157732242241606L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -19,25 +16,26 @@ public class Customer implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-    private Set<Product> products = new HashSet<Product>(0);
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
-    protected Customer() {
+    protected Product() {
     }
 
-    public Customer(Boolean enabled, String name, Set<Product> products) {
+    public Product(Boolean enabled, String name, Customer customer) {
         this.enabled = enabled;
         this.name = name;
-        this.products = products;
+        this.customer = customer;
     }
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "Product{" +
                 "id=" + id +
                 ", enabled=" + enabled +
                 ", name='" + name + '\'' +
-                ", products=" + products +
+                //", customer=" + customer +
                 '}';
     }
 }
