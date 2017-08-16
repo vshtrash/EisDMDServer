@@ -21,21 +21,52 @@ COMMENT ON DATABASE postgres
 -------------------------------------------------
 
 
--- Table: public.customer
+--- Table: public.customers
 
--- DROP TABLE public.customer;
+ -- DROP TABLE public.customers;
 
-CREATE TABLE public.customer
+ CREATE TABLE public.customers
+ (
+     id bigint NOT NULL,
+     enabled boolean,
+     name character varying(255) COLLATE pg_catalog."default",
+     CONSTRAINT customer_pkey1 PRIMARY KEY (id)
+ )
+ WITH (
+     OIDS = FALSE
+ )
+ TABLESPACE pg_default;
+
+ ALTER TABLE public.customers
+     OWNER to postgres;
+
+
+
+-- Table: public.products
+
+-- DROP TABLE public.products;
+
+CREATE TABLE public.products
 (
     id bigint NOT NULL,
-    enabled boolean,
+    customer_id bigint,
     name character varying(255) COLLATE pg_catalog."default",
-    CONSTRAINT customer_pkey1 PRIMARY KEY (id)
+    enabled boolean,
+    CONSTRAINT product_pkey PRIMARY KEY (id),
+    CONSTRAINT fk29w1glmsx19fyn0ts34ak8pc5 FOREIGN KEY (customer_id)
+        REFERENCES public.customers (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT fk_customer_id FOREIGN KEY (customer_id)
+        REFERENCES public.customers (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
 )
 WITH (
     OIDS = FALSE
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.customer
+ALTER TABLE public.products
     OWNER to postgres;
+     
