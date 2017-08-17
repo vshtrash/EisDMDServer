@@ -2,6 +2,7 @@ package com.eis.dto.customer;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerDto {
     private long id;
@@ -10,7 +11,7 @@ public class CustomerDto {
 
     private String name;
 
-    private ArrayList<ProductDto> products = new ArrayList<ProductDto>();
+    private List<ProductDto> products = new ArrayList<ProductDto>();
 
     public long getId() {
         return id;
@@ -37,7 +38,7 @@ public class CustomerDto {
         this.name = name;
     }
 
-    public ArrayList<ProductDto> getProducts() {
+    public List getProducts() {
         return products;
     }
 

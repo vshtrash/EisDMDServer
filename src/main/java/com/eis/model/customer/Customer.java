@@ -3,6 +3,7 @@ package com.eis.model.customer;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -20,7 +21,7 @@ public class Customer implements Serializable {
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-    private ArrayList<Product> products = new ArrayList<Product>();
+    private List<Product> products = new ArrayList<Product>();
 
     protected Customer() {
     }
@@ -55,7 +56,7 @@ public class Customer implements Serializable {
         this.name = name;
     }
 
-    public ArrayList<Product> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 

@@ -9,5 +9,5 @@ import org.springframework.data.repository.CrudRepository;
 
 
 public interface CustomerRepo extends CrudRepository<Customer, Long> {
-    List<Customer> findByName(String name);
+    //List<Customer> findByName(String name);
 }
