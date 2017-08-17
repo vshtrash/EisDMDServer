@@ -26,7 +26,7 @@ public class Customer implements Serializable {
     protected Customer() {
     }
 
-    public Customer(Boolean enabled, String name, ArrayList<Product> products) {
+    public Customer(Boolean enabled, String name, List<Product> products) {
         this.enabled = enabled;
         this.name = name;
         this.products = products;
