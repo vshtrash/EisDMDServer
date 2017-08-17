@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class SpringJpaPostgreSqlApplication {
+public class EisDmdServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringJpaPostgreSqlApplication.class, args);
+		SpringApplication.run(EisDmdServerApplication.class, args);
 	}
 }

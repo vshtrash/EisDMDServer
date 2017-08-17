@@ -21,24 +21,25 @@ public class CustomerController {
 
     @RequestMapping(PATH + "save")
     public ResponseEntity<Customer> process(){
-        Customer cust = new Customer(true, "AAA");
+        Customer cust = new Customer(true, "AAA", null);
         cust = repository.save(cust);
         return ResponseEntity.ok(cust);
     }
 
 
     @RequestMapping(PATH + "findall")
-    public ResponseEntity<ArrayList<Customer>> findAll(){
-        ArrayList<Customer> result;
-        result = (ArrayList<Customer>) repository.findAll();
-        //String result = "<html>";
+//    public ResponseEntity<ArrayList<Customer>> findAll(){
+    public String findAll(){                                    
+//        ArrayList<Customer> result;
+//        result = (ArrayList<Customer>) repository.findAll();
+        String result = "<html>";
 
-        //for(Customer cust : repository.findAll()){
-        //    result += "<div>" + cust.toString() + "</div>";
-        //}
+        for(Customer cust : repository.findAll()){
+            result += "<div>" + cust.toString() + "</div>";
+        }
 
-        //return result + "</html>";
-        return ResponseEntity.ok(result);
+        return result + "</html>";
+//        return ResponseEntity.ok(result);
     }
 
     @RequestMapping(PATH + "findbyid")
@@ -57,15 +58,6 @@ public class CustomerController {
         }
 
         return result + "</html>";
-    }
-
-
-
-    @RequestMapping(path=PATH +"greeting", method= RequestMethod.GET)
-    public ResponseEntity<Greeting> greeting() {
-        Greeting gr = new Greeting(1, "dgdflgkd;flgd;lkglj");
-        return ResponseEntity.ok(gr);
-
     }
 
 }
