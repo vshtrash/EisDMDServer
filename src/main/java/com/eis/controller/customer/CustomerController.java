@@ -1,6 +1,7 @@
 package com.eis.controller.customer;
 
 
+import com.eis.dto.customer.CustomerDto;
 import com.eis.model.customer.Customer;
 import com.eis.repo.customer.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,18 +29,17 @@ public class CustomerController {
 
 
     @RequestMapping(PATH + "findall")
-//    public ResponseEntity<ArrayList<Customer>> findAll(){
-    public String findAll(){                                    
-//        ArrayList<Customer> result;
-//        result = (ArrayList<Customer>) repository.findAll();
-        String result = "<html>";
+    public ResponseEntity<ArrayList<CustomerDto>> findAll(){
+    //public String findAll(){
+        ArrayList<Customer> result;
+        result = (ArrayList<Customer>) repository.findAll();
+//        String result = "<html>";
 
-        for(Customer cust : repository.findAll()){
-            result += "<div>" + cust.toString() + "</div>";
-        }
-
-        return result + "</html>";
-//        return ResponseEntity.ok(result);
+//        for(Customer cust : repository.findAll()){
+//            result += "<div>" + cust.toString() + "</div>";
+//        }
+//        return result + "</html>";
+        return ResponseEntity.ok(result);
     }
 
     @RequestMapping(PATH + "findbyid")
