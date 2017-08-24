@@ -8,6 +8,17 @@ public class ProductDto {
 
     private CustomerDto customerDto;
 
+    public ProductDto() {
+
+    }
+
+    public ProductDto(long id, Boolean enabled, String name, CustomerDto customerDto) {
+        this.id = id;
+        this.enabled = enabled;
+        this.name = name;
+        this.customerDto = customerDto;
+    }
+
     public long getId() {
         return id;
     }

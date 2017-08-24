@@ -13,6 +13,19 @@ public class CustomerDto {
 
     private List<ProductDto> products = new ArrayList<ProductDto>();
 
+    public CustomerDto() {
+    }
+
+    public CustomerDto(long id, Boolean enabled, String name, List<ProductDto> products) {
+        this.id = id;
+        this.enabled = enabled;
+        this.name = name;
+        if (products==null) {
+            this.products=new ArrayList<>();
+        } else {
+            this.products = products;}
+    }
+
     public long getId() {
         return id;
     }

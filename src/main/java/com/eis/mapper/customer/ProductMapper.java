@@ -9,7 +9,15 @@ public class ProductMapper {
 
     public static ProductDto toDto(Product product) {
         ModelMapper modelMapper = new ModelMapper();
-        ProductDto prodDTO = modelMapper.map(product, ProductDto.class);
-        return prodDTO;
+        ProductDto prodDto = modelMapper.map(product, ProductDto.class);
+        prodDto.setCustomerDto( CustomerMapper.toDto(product.getCustomer()));
+        return prodDto;
+    }
+
+    public static Product toEntity(ProductDto productDto) {
+        ModelMapper modelMapper = new ModelMapper();
+        Product prod = modelMapper.map(productDto, Product.class);
+        prod.setCustomer(CustomerMapper.toEntity(productDto.getCustomerDto()));
+        return prod;
     }
 }

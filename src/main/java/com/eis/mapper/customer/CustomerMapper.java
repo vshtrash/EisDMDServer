@@ -12,4 +12,12 @@ public  class CustomerMapper {
         CustomerDto custDTO = modelMapper.map(customer, CustomerDto.class);
         return custDTO;
     }
+
+    public static Customer toEntity(CustomerDto customerDto) {
+        ModelMapper modelMapper = new ModelMapper();
+        Customer cust = modelMapper.map(customerDto, Customer.class);
+        return cust;
+    }
+
+
 }

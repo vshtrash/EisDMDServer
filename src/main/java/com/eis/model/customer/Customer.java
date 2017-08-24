@@ -20,8 +20,8 @@ public class Customer implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-    private List<Product> products = new ArrayList<Product>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Product> products = new ArrayList<>();
 
     protected Customer() {
     }
@@ -29,8 +29,13 @@ public class Customer implements Serializable {
     public Customer(Boolean enabled, String name, List<Product> products) {
         this.enabled = enabled;
         this.name = name;
-        this.products = products;
+        if (products == null) {
+            this.products = new ArrayList<>();
+        } else {
+            this.products = products;
+        }
     }
+
 
     public long getId() {
         return id;

@@ -5,6 +5,7 @@ import com.eis.mapper.customer.CustomerMapper;
 import com.eis.model.customer.Customer;
 import com.eis.repo.customer.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public class CustomerService {
     @Autowired
     CustomerRepo customerRepo;
+
 
     @Transactional
     public ArrayList<CustomerDto> getAll() {
@@ -28,6 +30,22 @@ public class CustomerService {
     @Transactional
     public CustomerDto getById(Long id) {
         return CustomerMapper.toDto(customerRepo.findOne(id));
+    }
+
+    @Transactional
+    public CustomerDto createCustomer(CustomerDto customerDto) {
+        Customer customer = CustomerMapper.toEntity(customerDto);
+        customer =customerRepo.save(customer);
+        customerDto = CustomerMapper.toDto(customer);
+        return customerDto;
+    }
+
+    @Transactional
+    public CustomerDto updateCustomer(CustomerDto customerDto) {
+        Customer customer = CustomerMapper.toEntity(customerDto);
+        customer =customerRepo.save(customer);
+        customerDto = CustomerMapper.toDto(customer);
+        return customerDto;
     }
 
 }

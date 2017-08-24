@@ -16,8 +16,8 @@ public class Product implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "customer_id", referencedColumnName ="id", nullable = false)
     private Customer customer;
 
     protected Product() {
