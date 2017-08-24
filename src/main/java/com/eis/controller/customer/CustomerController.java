@@ -39,10 +39,8 @@ public class CustomerController {
     }
 
     @RequestMapping(PATH + "findbyid")
-    public String findById(@RequestParam("id") long id) {
-        String result = "";
-        result = repository.findOne(id).toString();
-        return result;
+    public CustomerDto findById(@RequestParam("id") long id) {
+        return customerService.getById(id) ;
     }
 
 //    @RequestMapping(PATH + "findbyname")

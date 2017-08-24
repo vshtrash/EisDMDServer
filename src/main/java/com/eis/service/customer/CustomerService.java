@@ -25,4 +25,9 @@ public class CustomerService {
         return result;
     }
 
+    @Transactional
+    public CustomerDto getById(Long id) {
+        return CustomerMapper.toDto(customerRepo.findOne(id));
+    }
+
 }
