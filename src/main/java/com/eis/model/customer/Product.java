@@ -1,8 +1,7 @@
 package com.eis.model.customer;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "products")
@@ -17,7 +16,7 @@ public class Product implements Serializable {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "customer_id", referencedColumnName ="id", nullable = false)
+    @JoinColumn(name = "customer_id", nullable = false) //, referencedColumnName ="id"
     private Customer customer;
 
     protected Product() {

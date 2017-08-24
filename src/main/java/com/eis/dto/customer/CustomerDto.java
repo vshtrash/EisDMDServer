@@ -20,10 +20,11 @@ public class CustomerDto {
         this.id = id;
         this.enabled = enabled;
         this.name = name;
-        if (products==null) {
-            this.products=new ArrayList<>();
+        if (products == null) {
+            this.products = new ArrayList<>();
         } else {
-            this.products = products;}
+            this.products = products;
+        }
     }
 
     public long getId() {
@@ -51,7 +52,7 @@ public class CustomerDto {
         this.name = name;
     }
 
-    public List getProducts() {
+    public List<ProductDto> getProducts() {
         return products;
     }
 

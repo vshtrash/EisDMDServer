@@ -1,6 +1,8 @@
 package com.eis.dto.customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(value = {"customerDto"})
 public class ProductDto {
     private long id;
     private Boolean enabled;

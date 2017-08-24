@@ -22,7 +22,6 @@ public class CustomerController {
     CustomerService customerService;
 
 
-
     @RequestMapping(value = PATH + "{id}", method = RequestMethod.GET)
     public ResponseEntity<CustomerDto> getCustomer(@PathVariable("id") Long id) {
         return ResponseEntity.ok(customerService.getById(id));
@@ -44,8 +43,6 @@ public class CustomerController {
     }
 
 
-
-
     //--------------Example
     @RequestMapping(PATH + "save")
     public ResponseEntity<Customer> process() {
@@ -56,7 +53,7 @@ public class CustomerController {
 
 
     @RequestMapping(PATH + "findall")
-    public ResponseEntity<List<CustomerDto>> findAll(){
+    public ResponseEntity<List<CustomerDto>> findAll() {
 
         return ResponseEntity.ok(customerService.getAll());
     }
@@ -65,11 +62,6 @@ public class CustomerController {
     public CustomerDto findById(@RequestParam("id") long id) {
         return customerService.getById(id);
     }
-
-
-
-
-
 
 
 //    @RequestMapping(PATH + "findbyname")
