@@ -66,7 +66,7 @@ public class Product implements Serializable {
                 "id=" + id +
                 ", enabled=" + enabled +
                 ", name='" + name + '\'' +
-                //", customer=" + customer +
+                ", customerId=" + customer.getId() +
                 '}';
     }
 }

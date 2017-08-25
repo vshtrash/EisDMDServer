@@ -14,8 +14,8 @@ public class CustomerMapperTest {
     @Test
     public void toDtoTest() {
         Customer customer = new Customer(true, "CustomerName", new ArrayList<>());
-        customer.getProducts().add(new Product(true, "Prod1", customer));
-        customer.getProducts().add(new Product(true, "Prod2", customer));
+        customer.addProduct(new Product(true, "Prod1", customer));
+        customer.addProduct(new Product(true, "Prod2", customer));
         CustomerDto customerDto = CustomerMapper.toDto(customer);
 
         assertThat(customer.getName()).as("check name: %s", customer.getName()).isEqualTo(customerDto.getName());
@@ -27,8 +27,8 @@ public class CustomerMapperTest {
     @Test
     public void toEntityTest() {
         CustomerDto customerDto = new CustomerDto(1L, true, "CustomerName", new ArrayList<>());
-        customerDto.getProducts().add(new ProductDto(11L, true, "Prod1", customerDto));
-        customerDto.getProducts().add(new ProductDto(22L, true, "Prod1", customerDto));
+        customerDto.addProduct(new ProductDto(11L, true, "Prod1", customerDto));
+        customerDto.addProduct(new ProductDto(22L, true, "Prod1", customerDto));
         Customer customer = CustomerMapper.toEntity(customerDto);
 
         assertThat(customerDto.getName()).as("check name: %s", customerDto.getName()).isEqualTo(customer.getName());

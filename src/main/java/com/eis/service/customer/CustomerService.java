@@ -5,7 +5,6 @@ import com.eis.mapper.customer.CustomerMapper;
 import com.eis.model.customer.Customer;
 import com.eis.repo.customer.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,7 +34,7 @@ public class CustomerService {
     @Transactional
     public CustomerDto createCustomer(CustomerDto customerDto) {
         Customer customer = CustomerMapper.toEntity(customerDto);
-        customer =customerRepo.save(customer);
+        customer = customerRepo.save(customer);
         customerDto = CustomerMapper.toDto(customer);
         return customerDto;
     }
@@ -43,7 +42,7 @@ public class CustomerService {
     @Transactional
     public CustomerDto updateCustomer(CustomerDto customerDto) {
         Customer customer = CustomerMapper.toEntity(customerDto);
-        customer =customerRepo.save(customer);
+        customer = customerRepo.save(customer);
         customerDto = CustomerMapper.toDto(customer);
         return customerDto;
     }

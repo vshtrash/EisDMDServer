@@ -11,7 +11,7 @@ public class CustomerDto {
 
     private String name;
 
-    private List<ProductDto> products = new ArrayList<ProductDto>();
+    private List<ProductDto> products = new ArrayList<>();
 
     public CustomerDto() {
     }
@@ -58,5 +58,11 @@ public class CustomerDto {
 
     public void setProducts(ArrayList<ProductDto> products) {
         this.products = products;
+    }
+
+    public ProductDto addProduct(ProductDto productDto) {
+        productDto.setCustomerDto(this);
+        this.getProducts().add(productDto);
+        return productDto;
     }
 }

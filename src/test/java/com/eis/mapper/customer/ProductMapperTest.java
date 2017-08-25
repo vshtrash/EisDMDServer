@@ -15,8 +15,7 @@ public class ProductMapperTest {
     public void toDtoTest() {
         Product product = new Product(true, "Prod1", null);
         Customer customer = new Customer(true, "name", null);
-        customer.getProducts().add(product);
-        product.setCustomer(customer);
+        customer.addProduct(product);
 
         ProductDto productDto = ProductMapper.toDto(product);
 
@@ -29,8 +28,7 @@ public class ProductMapperTest {
     public void toEntityTest() {
         ProductDto productDto = new ProductDto(1L, true, "Prod1", null);
         CustomerDto customerDto = new CustomerDto(11L, true, "name", null);
-        customerDto.getProducts().add(productDto);
-        productDto.setCustomerDto(customerDto);
+        customerDto.addProduct(productDto);
 
         Product product = ProductMapper.toEntity(productDto);
 

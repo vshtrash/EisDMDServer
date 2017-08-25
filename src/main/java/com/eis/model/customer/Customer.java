@@ -69,6 +69,12 @@ public class Customer implements Serializable {
         this.products = products;
     }
 
+    public Product addProduct(Product product) {
+        product.setCustomer(this);
+        this.getProducts().add(product);
+        return product;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
