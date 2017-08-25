@@ -11,11 +11,11 @@ import org.modelmapper.ModelMapper;
 public class CustomerMapper {
     public static CustomerDto toDto(Customer customer) {
         ModelMapper modelMapper = new ModelMapper();
-        CustomerDto customerDTO = modelMapper.map(customer, CustomerDto.class);
-        for (ProductDto productDto : customerDTO.getProducts()) {
-            productDto.setCustomerDto(customerDTO);
+        CustomerDto customerDto = modelMapper.map(customer, CustomerDto.class);
+        for (ProductDto productDto : customerDto.getProducts()) {
+            productDto.setCustomerDto(customerDto);
         }
-        return customerDTO;
+        return customerDto;
     }
 
     public static Customer toEntity(CustomerDto customerDto) {
