@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/EisDMDServer.iml" filepath="$PROJECT_DIR$/.idea/EisDMDServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eis.dmd.server.iml" filepath="$PROJECT_DIR$/eis.dmd.server.iml" />
     </modules>
   </component>
 </project>

@@ -1,7 +1,7 @@
 package com.eis.controller.customer;
 
 
-import com.eis.controller.ControllerPathNodes;
+import com.eis.controller.RestSettingsPath;
 import com.eis.dto.customer.CustomerDto;
 import com.eis.service.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 public class CustomerController {
-    protected static final String PATH = ControllerPathNodes.CUSTOMERS;
+    protected static final String PATH = RestSettingsPath.CUSTOMERS;
     @Autowired
     CustomerService customerService;
 

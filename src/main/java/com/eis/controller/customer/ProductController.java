@@ -1,20 +1,20 @@
 package com.eis.controller.customer;
 
-import com.eis.controller.ControllerPathNodes;
-import com.eis.dto.customer.CustomerDto;
+import com.eis.controller.RestSettingsPath;
 import com.eis.dto.customer.ProductDto;
-import com.eis.repo.customer.CustomerRepo;
-import com.eis.service.customer.CustomerService;
 import com.eis.service.customer.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 public class ProductController {
-    protected static final String PATH = ControllerPathNodes.PRODUCTS;
+    protected static final String PATH = RestSettingsPath.PRODUCTS;
     @Autowired
     ProductService productService;
 
