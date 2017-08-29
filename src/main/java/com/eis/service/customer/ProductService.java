@@ -5,6 +5,7 @@ import com.eis.dto.customer.ProductDto;
 import com.eis.mapper.customer.CustomerMapper;
 import com.eis.mapper.customer.ProductMapper;
 import com.eis.model.customer.Customer;
+import com.eis.model.customer.Product;
 import com.eis.repo.customer.CustomerRepo;
 import com.eis.repo.customer.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,17 +36,26 @@ public class ProductService {
     }
 
     @Transactional
-    public ProductDto getById(Long id) {
-        return ProductMapper.toDto(productRepo.findOne(id));
+    public ProductDto getByCustomerAndId(Long customerId, Long id) {
+        Product product = productRepo.findOne(id);
+        if (product.getCustomer().getId() != customerId) {
+            return null;
+        }
+        return ProductMapper.toDto(product);
     }
 
-//    @Transactional
-//    public CustomerDto createCustomer(CustomerDto customerDto) {
-//        Customer customer = CustomerMapper.toEntity(customerDto);
-//        customer = customerRepo.save(customer);
-//        customerDto = CustomerMapper.toDto(customer);
-//        return customerDto;
-//    }
+    @Transactional
+    public ProductDto createProduct(Long customerId, ProductDto productDto) {
+        Customer customer = customerRepo.findOne(customerId);
+        if (customer == null || customerId == null) {
+            return null;
+        }
+        Product product = ProductMapper.toEntity(productDto);
+        customer.addProduct(product);
+
+        product = productRepo.save(product);
+        return ProductMapper.toDto(product);
+    }
 //
 //    @Transactional
 //    public CustomerDto updateCustomer(CustomerDto customerDto) {

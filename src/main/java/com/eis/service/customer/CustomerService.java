@@ -28,6 +28,10 @@ public class CustomerService {
 
     @Transactional
     public CustomerDto getById(Long id) {
+        Customer customer = customerRepo.findOne(id);
+        if (customer == null) {
+            return null;
+        }
         return CustomerMapper.toDto(customerRepo.findOne(id));
     }
 

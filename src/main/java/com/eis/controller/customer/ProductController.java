@@ -5,10 +5,7 @@ import com.eis.dto.customer.ProductDto;
 import com.eis.service.customer.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +19,7 @@ public class ProductController {
     //One
     @RequestMapping(value = PATH + "{id}", method = RequestMethod.GET)
     public ResponseEntity<ProductDto> getProduct(@PathVariable("customerId") Long customerId, @PathVariable("id") Long id) {
-        return ResponseEntity.ok(productService.getById(id));
+        return ResponseEntity.ok(productService.getByCustomerAndId(customerId, id));
     }
 
     //All
@@ -31,13 +28,13 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAll(customerId));
     }
 
-//    //Create
-//    @RequestMapping(value = PATH, method = RequestMethod.POST)
-//    public ResponseEntity<CustomerDto> createCustomer(@RequestBody CustomerDto customerDto) {
-//        CustomerDto result = customerService.createCustomer(customerDto);
-//        return ResponseEntity.ok(result);
-//    }
-//
+    //Create
+    @RequestMapping(value = PATH, method = RequestMethod.POST)
+    public ResponseEntity<ProductDto> createProduct(@PathVariable("customerId") Long customerId, @RequestBody ProductDto productDto) {
+        ProductDto result = productService.createProduct(customerId,productDto);
+        return ResponseEntity.ok(result);
+    }
+
 //
 //    //Update
 //    @RequestMapping(value = PATH, method = RequestMethod.PUT)
