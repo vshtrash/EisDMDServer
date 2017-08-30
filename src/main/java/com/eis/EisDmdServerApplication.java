@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 //@EntityScan(basePackages = {"com.eis."} )
-@EnableJpaRepositories(basePackages = {"com.eis.repo"})
+//@EnableJpaRepositories(basePackages = {"com.eis.repo"})
 public class EisDmdServerApplication {
 
 	public static void main(String[] args) {

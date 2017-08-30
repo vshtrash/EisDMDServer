@@ -1,8 +1,6 @@
 package com.eis.controller.customer;
 
-
 import com.eis.controller.RestSettingsPath;
-import com.eis.repo.customer.CustomerRepo;
 import com.eis.repo.customer.ProductRepo;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,19 +17,13 @@ import java.nio.charset.Charset;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
-
-
-// https://spring.io/guides/tutorials/bookmarks/
 
 @RunWith(SpringRunner.class)
 @SpringBootTest //(classes = Application.class)
 @WebAppConfiguration
-public class CustomerControllerTest {
-
+public class ProductControllerTest {
     private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
             MediaType.APPLICATION_JSON.getSubtype(),
             Charset.forName("utf8"));
@@ -42,20 +34,23 @@ public class CustomerControllerTest {
     private WebApplicationContext webApplicationContext;
 
     @Autowired
-    private CustomerRepo customerRepo;
+    private ProductRepo productRepo;
 
     @Before
     public void setup() throws Exception {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
 
-        //customerRepo. create test data
+        //productRepo. create test data
     }
 
     @Test
     public void findAllTest() throws Exception {
+        Long customerId = -1L;
 
-        mockMvc.perform(get(RestSettingsPath.CUSTOMERS))
-                .andExpect(status().isOk());
+        mockMvc.perform(get(RestSettingsPath.getProductWithCustomerId(customerId)))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$", hasSize(0)));
     }
 
 }

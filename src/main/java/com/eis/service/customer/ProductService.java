@@ -45,7 +45,7 @@ public class ProductService {
     }
 
     @Transactional
-    public ProductDto createProduct(Long customerId, ProductDto productDto) {
+    public ProductDto createUpdateProduct(Long customerId, ProductDto productDto) {
         Customer customer = customerRepo.findOne(customerId);
         if (customer == null || customerId == null) {
             return null;
@@ -56,14 +56,6 @@ public class ProductService {
         product = productRepo.save(product);
         return ProductMapper.toDto(product);
     }
-//
-//    @Transactional
-//    public CustomerDto updateCustomer(CustomerDto customerDto) {
-//        Customer customer = CustomerMapper.toEntity(customerDto);
-//        customer = customerRepo.save(customer);
-//        customerDto = CustomerMapper.toDto(customer);
-//        return customerDto;
-//    }
 
 }
 

@@ -31,17 +31,16 @@ public class ProductController {
     //Create
     @RequestMapping(value = PATH, method = RequestMethod.POST)
     public ResponseEntity<ProductDto> createProduct(@PathVariable("customerId") Long customerId, @RequestBody ProductDto productDto) {
-        ProductDto result = productService.createProduct(customerId,productDto);
+        ProductDto result = productService.createUpdateProduct(customerId,productDto);
         return ResponseEntity.ok(result);
     }
 
-//
-//    //Update
-//    @RequestMapping(value = PATH, method = RequestMethod.PUT)
-//    public ResponseEntity<CustomerDto> updateCustomer(@RequestBody CustomerDto customerDto) {
-//        CustomerDto result = customerService.updateCustomer(customerDto);
-//        return ResponseEntity.ok(result);
-//    }
+    //Update
+    @RequestMapping(value = PATH, method = RequestMethod.PUT)
+    public ResponseEntity<ProductDto> updateCustomer(@PathVariable("customerId") Long customerId, @RequestBody ProductDto productDto) {
+        ProductDto result = productService.createUpdateProduct(customerId,productDto);
+        return ResponseEntity.ok(result);
+    }
 
 }
 
