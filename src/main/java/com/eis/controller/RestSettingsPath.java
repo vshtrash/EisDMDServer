@@ -7,7 +7,6 @@ public class RestSettingsPath {
     public static final String DMD_VERSIONS ="/dmd/{productId}/versions/";
 
 
-
     public static String getProductWithCustomerId(Long customerId) {
         if (customerId == null) {
             return PRODUCTS.replaceAll("\\{customerId\\}","null");
