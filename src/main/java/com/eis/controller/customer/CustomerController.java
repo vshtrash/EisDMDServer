@@ -24,6 +24,8 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.getById(id));
     }
 
+    
+
     //All
     @RequestMapping(value = PATH, method = RequestMethod.GET)
     public ResponseEntity<List<CustomerDto>> findAll() {
