@@ -33,12 +33,12 @@ public class DmdVersionController {
         return ResponseEntity.ok(dmdVersionService.getByProductIdAndId(productId, id));
     }
 
-//    //All
-//    @RequestMapping(value = PATH, method = RequestMethod.GET)
-//    public ResponseEntity<List<CustomerDto>> findAll() {
-//        return ResponseEntity.ok(customerService.getAll());
-//    }
-//
+    //All
+    @RequestMapping(value = PATH, method = RequestMethod.GET)
+    public ResponseEntity<List<DmdVersionDto>> findAll(@PathVariable("productId") Long productId) {
+        return ResponseEntity.ok(dmdVersionService.getAll(productId));
+    }
+
 //    //Create
 //    @RequestMapping(value = PATH, method = RequestMethod.POST)
 //    public ResponseEntity<CustomerDto> createCustomer(@RequestBody CustomerDto customerDto) {

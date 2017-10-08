@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+
 @Service("dmdVersionService")
 public class DmdVersionService {
     @Autowired
@@ -35,16 +37,24 @@ public class DmdVersionService {
     }
 
 
-//    @Transactional
-//    public ArrayList<CustomerDto> getAll() {
-//        ArrayList<CustomerDto> result = new ArrayList<>();
-//
-//        for (Customer cust : customerRepo.findAll()) {
-//            result.add(CustomerMapper.toDto(cust));
-//        }
-//        return result;
-//    }
-//
+    @Transactional
+    public ArrayList<DmdVersionDto> getAll(Long productId) {
+        ArrayList<DmdVersionDto> result = new ArrayList<>();
+
+        if (productId != null) {
+            Product product = productRepo.findOne(productId);
+//            if (product != null) {
+//                DmdVersion dmdVersion = dmdVersionRepo.findAllByProduct() ;
+//                if (dmdVersion != null) {
+//                    if (dmdVersion.getProductId() == productId) {
+//                        result = DmdVersionMapper.toDto(dmdVersion);
+//                    }
+//                }
+//            }
+        }
+        return result;
+    }
+
 //
 //    @Transactional
 //    public CustomerDto createCustomer(CustomerDto customerDto) {
