@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DmdVersionRepo extends JpaRepository<DmdVersion, Long>, JpaSpecificationExecutor {
-    List<DmdVersionDto> findAllByProduct(Specification <DmdVersion> specification);
+public interface DmdVersionRepo extends JpaRepository<DmdVersion, Long>, JpaSpecificationExecutor<DmdVersion> {
+    //DmdVersionDto getByProductIdAndId(Long productId, Long id);
+    //List<DmdVersion> findAllByProduct(Specification <DmdVersion> specification);
 }

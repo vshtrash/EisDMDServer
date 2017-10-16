@@ -2,21 +2,15 @@ package com.eis.controller.dmdversion;
 
 
 import com.eis.controller.RestSettingsPath;
-import com.eis.dto.customer.CustomerDto;
-import com.eis.dto.customer.ProductDto;
 import com.eis.dto.dmdversion.DmdVersionDto;
-import com.eis.mapper.customer.CustomerMapper;
-import com.eis.mapper.dmdversion.DmdVersionMapper;
-import com.eis.model.customer.Customer;
-import com.eis.model.customer.Product;
-import com.eis.repo.customer.ProductRepo;
-import com.eis.service.customer.CustomerService;
 import com.eis.service.dmdversion.DmdVersionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,7 +30,7 @@ public class DmdVersionController {
     //All
     @RequestMapping(value = PATH, method = RequestMethod.GET)
     public ResponseEntity<List<DmdVersionDto>> findAll(@PathVariable("productId") Long productId) {
-        return ResponseEntity.ok(dmdVersionService.getAll(productId));
+        return ResponseEntity.ok(dmdVersionService.findAllByProduct(productId));
     }
 
 //    //Create
