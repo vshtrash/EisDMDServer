@@ -48,27 +48,28 @@ public class DmdVersionService {
 
             DmdVersionSpecification spec = new DmdVersionSpecification(new SearchCriteria("productId", ":", productId));
 
-            List<DmdVersion> versions = dmdVersionRepo.findAll(spec) ;
+            List<DmdVersion> versions = dmdVersionRepo.findAll(spec);
             result.addAll(versions.stream().map(DmdVersionMapper::toDto).collect(Collectors.toList()));
         }
         return result;
     }
 
-//
-//    @Transactional
-//    public CustomerDto createCustomer(CustomerDto customerDto) {
-//        Customer customer = CustomerMapper.toEntity(customerDto);
-//        customer = customerRepo.save(customer);
-//        customerDto = CustomerMapper.toDto(customer);
-//        return customerDto;
-//    }
-//
-//    @Transactional
-//    public CustomerDto updateCustomer(CustomerDto customerDto) {
-//        Customer customer = CustomerMapper.toEntity(customerDto);
-//        customer = customerRepo.save(customer);
-//        customerDto = CustomerMapper.toDto(customer);
-//        return customerDto;
-//    }
 
+    @Transactional
+    public DmdVersionDto createDmdVersion(DmdVersionDto dmdVersionDto) {
+        DmdVersion dmdVersion = DmdVersionMapper.toEntity(dmdVersionDto);
+        dmdVersion = dmdVersionRepo.save(dmdVersion);
+        dmdVersionDto = DmdVersionMapper.toDto(dmdVersion);
+        return dmdVersionDto;
     }
+
+
+    @Transactional
+    public DmdVersionDto updateDmdVersion(DmdVersionDto dmdVersionDto) {
+        DmdVersion dmdVersion = DmdVersionMapper.toEntity(dmdVersionDto);
+        dmdVersion = dmdVersionRepo.save(dmdVersion);
+        dmdVersionDto = DmdVersionMapper.toDto(dmdVersion);
+        return dmdVersionDto;
+    }
+
+}
